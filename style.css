@@ -79,6 +79,10 @@ body {
   color: #e54;
 }
 
+.animais-lista li {
+  cursor: pointer;
+}
+
 .animais-descricao h2::before {
   content: "";
   display: inline-block;
@@ -210,5 +214,64 @@ body {
   .dados,
   .copy {
     grid-column: 1 / -1;
+  }
+}
+
+/* js -> css */
+
+.js-tabcontent section {
+  display: none;
+}
+
+.js-tabcontent section.ativo {
+  display: block !important;
+  animation: show 0.5s forwards;
+  /* o 'forwards' ele define que a animação deve ficar no estado final em qual foi definido. */
+}
+
+.js-accordion dt {
+  -webkit-user-select: none;
+}
+
+.js-accordion dt::after {
+  content: "↓";
+  margin-left: 10px;
+}
+
+.js-accordion dt.ativo::after {
+  content: "↑";
+  margin-left: 10px;
+}
+
+.js-accordion dd {
+  display: none;
+  -webkit-user-select: none;
+}
+
+.js-accordion dd.ativo {
+  display: block;
+  -webkit-user-select: none;
+  animation: slideDown 0.5s forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    max-height: 100%;
+    opacity: 1;
   }
 }
